@@ -2,17 +2,21 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import React    from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { rootReducer } from 'reducers/root';
+import store from 'store/store';
 
 import Root from 'components/root.jsx';
-
-const store = createStore(rootReducer);
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <Root/>
-  </Provider>,
+  <div>
+    <Provider store={ store }>
+      <Root/>
+    </Provider>
+
+    <DebugPanel top right bottom>
+      <DevTools store={store} monitor={LogMonitor} />
+    </DebugPanel>
+  </div>,
   document.getElementById('root')
 );
