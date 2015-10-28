@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import PureComponent from 'react-pure-render/component';
 import { Row, Col, Thumbnail } from 'react-bootstrap';
 
-export default class SongDetails extends Component {
+export default class SongDetails extends PureComponent {
   _randomThumbnailUrl() {
     const randomHeight = 300 + Math.round(Math.random() * 10);
     const randomWidth  = 200 + Math.round(Math.random() * 10);

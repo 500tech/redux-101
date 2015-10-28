@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import PureComponent from 'react-pure-render/component';
 import { Panel } from 'react-bootstrap';
 
 import SongDetails from 'components/song-details.jsx';
 
-export default class SongList extends Component {
+export default class SongList extends PureComponent {
 
   _songList() {
     return this.props.songs.map((song) => {

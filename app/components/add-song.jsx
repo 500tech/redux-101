@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { Button } from 'react-bootstrap';
+import PureComponent from 'react-pure-render/component';
 
-export default class AddSong extends Component {
+export default class AddSong extends PureComponent {
   _submit(event) {
     event.preventDefault();
 

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import PureComponent from 'react-pure-render/component';
 import { connect } from 'react-redux';
 import { addSong, playNext } from 'actions/playlist';
 
@@ -6,7 +7,7 @@ import AddSong from 'components/add-song.jsx';
 import SongList from 'components/song-list.jsx';
 import NowPlaying from 'components/now-playing.jsx';
 
-export class Playlist extends Component {
+export class Playlist extends PureComponent {
   componentDidMount() {
     const handle = setInterval(
       () => this.props.dispatch(playNext()),
