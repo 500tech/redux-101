@@ -7,7 +7,7 @@ export default class SongList extends Component {
 
   _songList() {
     return this.props.songs.map((song) => {
-      return <SongDetails song={ song } key={ song.id }/>;
+      return <SongDetails song={ song } key={ song.title }/>;
     });
   }
 
