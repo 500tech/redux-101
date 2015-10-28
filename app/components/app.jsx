@@ -1,11 +1,23 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-module.exports = React.createClass({
+import Root from 'components/root.jsx';
 
-  displayName: 'App',
+export default class App extends Component {
 
-  render: function () {
-    return <div>Welcome to Redux 101!</div>;
+  constructor() {
+    super();
+
+    this.state = {
+      nowPlaying: null,
+      songs: [
+        { title: 'Hey Jude' },
+        { title: 'Let It Be' },
+        { title: 'Yesterday' }
+      ]
+    }
   }
 
-});
+  render() {
+    return <Root playlist={ this.state }/>;
+  }
+}
