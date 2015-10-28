@@ -1,24 +1,19 @@
 import { rootReducer } from 'reducers/root';
 import { addSong, playNext } from 'actions/playlist';
+import Immutable from 'immutable';
 
 describe('Root reducer', () => {
-  const initialState = {
+  const initialState = Immutable.fromJS({
     nowPlaying: null,
     songs: [
       { title: 'Hey Jude' },
       { title: 'Let It Be' },
       { title: 'Yesterday' }
     ]
-  };
-
-  let prevState;
-
-  beforeEach(() => {
-    prevState = Object.assign({}, initialState);
   });
 
   it('should not change state on unknown action', () => {
-    expect(rootReducer(prevState, { type: 'FAKE' })).toEqual(prevState);
+    expect(rootReducer(initialState, { type: 'FAKE' })).toEqual(initialState);
   });
 
   it('should add song', () => {
@@ -32,7 +27,7 @@ describe('Root reducer', () => {
       ]
     };
 
-    expect(rootReducer(prevState, addSong('foo'))).toEqual(nextState);
+    expect(rootReducer(initialState, addSong('foo')).toJS()).toEqual(nextState);
   });
 
   it('should play the next song when none are playing', () => {
@@ -45,18 +40,11 @@ describe('Root reducer', () => {
       ]
     };
 
-    expect(rootReducer(prevState, playNext())).toEqual(nextState);
+    expect(rootReducer(initialState, playNext()).toJS()).toEqual(nextState);
   });
 
   it('should play the next song one is playing', () => {
-    prevState = {
-      nowPlaying: { title: 'Let It Be' },
-      songs: [
-        { title: 'Hey Jude' },
-        { title: 'Let It Be' },
-        { title: 'Yesterday' }
-      ]
-    };
+    const prevState = initialState.set('nowPlaying', initialState.getIn(['songs', 1]));
 
     const nextState = {
       nowPlaying: { title: 'Yesterday' },
@@ -67,6 +55,6 @@ describe('Root reducer', () => {
       ]
     };
 
-    expect(rootReducer(prevState, playNext())).toEqual(nextState);
+    expect(rootReducer(prevState, playNext()).toJS()).toEqual(nextState);
   });
 });

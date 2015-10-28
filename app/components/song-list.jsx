@@ -7,12 +7,12 @@ export default class SongList extends Component {
 
   _songList() {
     return this.props.songs.map((song) => {
-      return <SongDetails song={ song } key={ song.title }/>;
+      return <SongDetails song={ song } key={ song.get('title') }/>;
     });
   }
 
   render() {
-    if (!this.props.songs.length) {
+    if (!this.props.songs.size) {
       return null;
     }
 
@@ -26,5 +26,5 @@ export default class SongList extends Component {
 }
 
 SongList.propTypes = {
-  songs: PropTypes.array.isRequired
+  songs: PropTypes.object.isRequired
 };

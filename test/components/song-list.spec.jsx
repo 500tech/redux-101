@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils';
+import Immutable from 'immutable';
 
 import SongList from 'components/song-list.jsx';
 import SongDetails from 'components/song-details.jsx';
@@ -7,10 +8,10 @@ import SongDetails from 'components/song-details.jsx';
 describe('SongList component', () => {
 
   let Component;
-  const songs = [
+  const songs = Immutable.fromJS([
     { title: 'Hey Jude' },
     { title: 'Let It Be' }
-  ];
+  ]);
 
   beforeAll(() => {
     Component = ReactTestUtils.renderIntoDocument(<SongList songs={ songs } />);
@@ -27,7 +28,7 @@ describe('SongList component', () => {
     expect(songDetailsComponents.length).toBe(2);
 
     songDetailsComponents.forEach((component, index) => {
-      expect(component.props.song).toEqual(songs[index]);
+      expect(component.props.song).toEqual(songs.get(index));
     })
   })
 

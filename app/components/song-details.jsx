@@ -10,17 +10,19 @@ export default class SongDetails extends Component {
   }
 
   render() {
+    const details = this.props.song.toJS();
+
     return (
       <Row>
         <Col md={ 4 }>
           <Thumbnail
-            src={ this.props.song.thumbnailUrl || this._randomThumbnailUrl() }
+            src={ details.thumbnailUrl || this._randomThumbnailUrl() }
             style={{ minHeight: 160 }}
             bsSize="xs"/>
         </Col>
 
         <Col md={ 8 }>
-          <h3>{ this.props.song.title }</h3>
+          <h3>{ details.title }</h3>
         </Col>
       </Row>
     );

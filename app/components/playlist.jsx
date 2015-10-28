@@ -43,13 +43,13 @@ export class Playlist extends Component {
 
 Playlist.propTypes = {
   nowPlaying: PropTypes.object,
-  songs: PropTypes.array.isRequired
+  songs: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    nowPlaying: state.nowPlaying,
-    songs: state.songs
+    nowPlaying: state.get('nowPlaying'),
+    songs: state.get('songs')
   };
 }
 

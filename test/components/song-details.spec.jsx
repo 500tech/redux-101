@@ -2,14 +2,15 @@ import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils';
 import SongDetails from 'components/song-details.jsx';
 import { Thumbnail } from 'react-bootstrap';
+import Immutable from 'immutable';
 
 describe('SongDetails Component', () => {
 
   let Component;
-  const song = {
+  const song = Immutable.fromJS({
     thumbnailUrl: 'TEST_URL',
     title: 'TEST_SONG'
-  };
+  });
 
   beforeAll(() => {
     Component = ReactTestUtils.renderIntoDocument(<SongDetails song={ song }/>);
@@ -26,8 +27,8 @@ describe('SongDetails Component', () => {
     const songTitle = ReactTestUtils
       .findRenderedDOMComponentWithTag(Component, 'h3');
 
-    expect(thumbnail.props.src).toBe(song.thumbnailUrl);
-    expect(songTitle.innerText).toBe(song.title);
+    expect(thumbnail.props.src).toBe(song.get('thumbnailUrl'));
+    expect(songTitle.innerText).toBe(song.get('title'));
   })
 
 });
