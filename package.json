@@ -1,0 +1,35 @@
+{
+  "name": "teamtube",
+  "version": "1.0.0",
+  "description": "Collaborative YouTube playlist application for teams",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server --hot --progress",
+    "bundle": "./node_modules/.bin/webpack -p --progress",
+    "test": "./node_modules/.bin/karma start"
+  },
+  "author": "500Tech",
+  "dependencies": {
+    "bootstrap": "3.3.5",
+    "react": "0.14.0",
+    "react-bootstrap": "0.27.2",
+    "react-dom": "0.14.0"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "3.1.0",
+    "babel-core": "5.8.29",
+    "babel-loader": "5.3.2",
+    "css-loader": "0.21.0",
+    "file-loader": "0.8.4",
+    "html-webpack-plugin": "1.6.1",
+    "karma": "0.13.12",
+    "karma-chrome-launcher": "0.2.1",
+    "karma-clear-screen-reporter": "0.0.1",
+    "karma-jasmine": "0.3.6",
+    "karma-mocha-reporter": "1.1.1",
+    "karma-webpack": "1.7.0",
+    "react-addons-test-utils": "0.14.0",
+    "style-loader": "0.13.0",
+    "webpack": "1.12.1",
+    "webpack-dev-server": "1.11.0"
+  }
+}
