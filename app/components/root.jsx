@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 
-export default class Root extends Component {
+import Playlist from 'components/playlist.jsx';
 
+export default class Root extends Component {
   render() {
     return (
       <Grid fluid={ true }>
@@ -10,13 +11,14 @@ export default class Root extends Component {
           <Col md={ 8 } mdOffset={ 2 }>
 
             <PageHeader>TeamTube</PageHeader>
-            
+
+            <Playlist { ...this.props.playlist } />
+
           </Col>
         </Row>
       </Grid>
     );
   }
-
 }
 
 Root.propTypes = {
