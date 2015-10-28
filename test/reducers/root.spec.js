@@ -1,5 +1,5 @@
 import { rootReducer } from 'reducers/root';
-import { addSong } from 'actions/playlist';
+import { addSong, playNext } from 'actions/playlist';
 
 describe('Root reducer', () => {
   const initialState = {
@@ -32,6 +32,41 @@ describe('Root reducer', () => {
       ]
     };
 
-    expect(rootReducer(prevState, addSong('foo')).toEqual(nextState);
+    expect(rootReducer(prevState, addSong('foo'))).toEqual(nextState);
+  });
+
+  it('should play the next song when none are playing', () => {
+    const nextState = {
+      nowPlaying: { title: 'Hey Jude' },
+      songs: [
+        { title: 'Hey Jude' },
+        { title: 'Let It Be' },
+        { title: 'Yesterday' }
+      ]
+    };
+
+    expect(rootReducer(prevState, playNext())).toEqual(nextState);
+  });
+
+  it('should play the next song one is playing', () => {
+    prevState = {
+      nowPlaying: { title: 'Let It Be' },
+      songs: [
+        { title: 'Hey Jude' },
+        { title: 'Let It Be' },
+        { title: 'Yesterday' }
+      ]
+    };
+
+    const nextState = {
+      nowPlaying: { title: 'Yesterday' },
+      songs: [
+        { title: 'Hey Jude' },
+        { title: 'Let It Be' },
+        { title: 'Yesterday' }
+      ]
+    };
+
+    expect(rootReducer(prevState, playNext())).toEqual(nextState);
   });
 });

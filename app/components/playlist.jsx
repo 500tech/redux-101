@@ -1,12 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addSong } from 'actions/playlist';
+import { addSong, playNext } from 'actions/playlist';
 
 import AddSong from 'components/add-song.jsx';
 import SongList from 'components/song-list.jsx';
 import NowPlaying from 'components/now-playing.jsx';
 
 export class Playlist extends Component {
+  componentDidMount() {
+    const handle = setInterval(
+      () => this.props.dispatch(playNext()),
+      5000
+    );
+
+    this.setState({ handle });
+  }
+
+  componentWillUnmount() {
+    if (this.state.handle) {
+      clearInterval(this.state.handle);
+    }
+  }
+
   _addSong(title) {
     this.props.dispatch(addSong(title));
   }
