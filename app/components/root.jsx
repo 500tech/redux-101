@@ -12,7 +12,7 @@ export default class Root extends Component {
 
             <PageHeader>TeamTube</PageHeader>
 
-            <Playlist { ...this.props.playlist } />
+            <Playlist />
 
           </Col>
         </Row>
@@ -20,7 +20,3 @@ export default class Root extends Component {
     );
   }
 }
-
-Root.propTypes = {
-  playlist: PropTypes.object.isRequired
-};
