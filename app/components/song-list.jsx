@@ -8,7 +8,7 @@ export default class SongList extends PureComponent {
 
   _songList() {
     return this.props.songs.map((song) => {
-      return <SongDetails song={ song } key={ song.get('title') }/>;
+      return <SongDetails song={ song } key={ song.get('id') }/>;
     });
   }
 

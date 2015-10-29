@@ -1,4 +1,4 @@
-import { ADD_SONG, PLAY_NEXT, PLAYLIST_FETCH_SUCCESS } from 'constants/action-types';
+import { PLAY_NEXT, PLAYLIST_FETCH_SUCCESS } from 'constants/action-types';
 import Immutable from 'immutable';
 
 const initialState = Immutable.fromJS({
@@ -8,10 +8,6 @@ const initialState = Immutable.fromJS({
 
 export function rootReducer(state = initialState, action) {
   switch(action.type) {
-    case ADD_SONG:
-      const songs = state.get('songs').push(Immutable.Map({ title: action.title }));
-      return state.set('songs', songs);
-
     case PLAY_NEXT:
       let nextId = 0;
 

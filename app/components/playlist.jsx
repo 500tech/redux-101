@@ -25,8 +25,8 @@ export class Playlist extends PureComponent {
     }
   }
 
-  _addSong(title) {
-    this.props.dispatch(addSong(title));
+  _addSong(youtubeUrl) {
+    this.props.dispatch(addSong(youtubeUrl));
   }
 
   render() {

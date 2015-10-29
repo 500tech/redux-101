@@ -1,4 +1,4 @@
-export const ADD_SONG = 'ADD_SONG';
+export const ADD_SONG_ERROR = 'ADD_SONG_ERROR';
 export const PLAY_NEXT = 'PLAY_NEXT';
 export const PLAYLIST_FETCHING = 'PLAYLIST_FETCHING';
 export const PLAYLIST_FETCH_SUCCESS = 'PLAYLIST_FETCH_SUCCESS';
