@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import PureComponent from 'react-pure-render/component';
 import { connect } from 'react-redux';
-import { addSong, playNext } from 'actions/playlist';
+import { addSong, playNext, fetchPlaylist } from 'actions/playlist';
 
 import AddSong from 'components/add-song.jsx';
 import SongList from 'components/song-list.jsx';
@@ -15,6 +15,8 @@ export class Playlist extends PureComponent {
     );
 
     this.setState({ handle });
+
+    this.props.dispatch(fetchPlaylist());
   }
 
   componentWillUnmount() {
