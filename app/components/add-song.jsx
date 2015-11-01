@@ -6,9 +6,9 @@ export default class AddSong extends PureComponent {
   _submit(event) {
     event.preventDefault();
 
-    this.props.addSong(this.refs.title.value);
+    this.props.addSong(this.refs.url.value);
 
-    this.refs.title.value = '';
+    this.refs.url.value = '';
   }
 
   render() {
@@ -16,7 +16,7 @@ export default class AddSong extends PureComponent {
       <div className="form-group group-class">
         <form className="input-group" onSubmit={ this._submit.bind(this) }>
           <input type="text"
-                 ref="title"
+                 ref="url"
                  placeholder="Song URL"
                  className="form-control"/>
 
