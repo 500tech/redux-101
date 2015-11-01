@@ -16,17 +16,4 @@ describe('Root reducer', () => {
     expect(rootReducer(initialState, { type: 'FAKE' }).toJS()).toEqual(initialState.toJS());
   });
 
-  it('should add song', () => {
-    const nextState = {
-      nowPlaying: null,
-      songs: [
-        { title: 'Hey Jude' },
-        { title: 'Let It Be' },
-        { title: 'Yesterday' },
-        { title: 'TEST' }
-      ]
-    };
-
-    expect(rootReducer(initialState, addSong('TEST')).toJS()).toEqual(nextState);
-  });
 });
