@@ -10,7 +10,7 @@ export function addSong(youtubeUrl) {
           return dispatch(addSongError(error));
         }
 
-        dispatch(fetchPlaylist(response.body));
+        dispatch(fetchPlaylist());
       });
   };
 }
