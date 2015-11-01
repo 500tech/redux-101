@@ -18,8 +18,10 @@
     "react-pure-render": "^1.0.2",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc3",
+    "redux-immutablejs": "0.0.7",
     "redux": "^3.0.4",
-    "redux-immutablejs": "0.0.7"
+    "redux-thunk": "^1.0.0",
+    "superagent": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "3.1.0",
