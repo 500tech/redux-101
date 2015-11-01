@@ -7,7 +7,8 @@ describe('Root reducer', () => {
     playlist: {
       nowPlaying: null,
       songs: []
-    }
+    },
+    playlists: []
   });
 
   it('should not change state on unknown action', () => {
