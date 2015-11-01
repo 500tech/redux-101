@@ -13,11 +13,11 @@ describe('Root reducer', () => {
   });
 
   it('should not change state on unknown action', () => {
-    expect(rootReducer(initialState, { type: 'FAKE' })).toEqual(initialState);
+    expect(rootReducer(initialState, { type: 'FAKE' }).toJS()).toEqual(initialState.toJS());
   });
 
   it('should add song', () => {
-    const nextState = Immutable.fromJS({
+    const nextState = {
       nowPlaying: null,
       songs: [
         { title: 'Hey Jude' },
@@ -25,8 +25,8 @@ describe('Root reducer', () => {
         { title: 'Yesterday' },
         { title: 'TEST' }
       ]
-    });
+    };
 
-    expect(rootReducer(prevState, addSong('TEST')).toEqual(nextState);
+    expect(rootReducer(initialState, addSong('TEST')).toJS()).toEqual(nextState);
   });
 });
