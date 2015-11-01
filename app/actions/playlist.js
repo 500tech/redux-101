@@ -1,5 +1,5 @@
 import request from 'superagent';
-import { ADD_SONG_ERROR, PLAY_NEXT, PLAYLIST_FETCHING, PLAYLIST_FETCH_SUCCESS, PLAYLIST_FETCH_ERROR } from 'constants/action-types';
+import { ADD_SONG_ERROR, PLAY_NEXT, PLAYLIST_FETCHING, PLAYLIST_FETCH_SUCCESS, PLAYLIST_FETCH_ERROR, VOTE_SONG } from 'constants/action-types';
 
 export function addSong(youtubeUrl, playlistId) {
   return (dispatch) => {
@@ -50,3 +50,14 @@ export function fetchPlaylist(playlistId) {
   };
 }
 
+export function vote(direction, songId, playlistId) {
+  return (dispatch) => {
+    request.post(`http://redux101.500tech.com/playlists/${ playlistId  }/${ direction }`)
+      .send({ songId })
+      .end((error) => {
+        if (!error) {
+          dispatch(fetchPlaylist(playlistId));
+        }
+      });
+  }
+}

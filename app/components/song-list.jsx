@@ -8,7 +8,9 @@ export default class SongList extends PureComponent {
 
   _songList() {
     return this.props.songs.map((song) => {
-      return <SongDetails song={ song } key={ song.get('id') }/>;
+      return <SongDetails song={ song }
+                          vote={ this.props.vote }
+                          key={ song.get('id') }/>;
     });
   }
 
@@ -27,5 +29,6 @@ export default class SongList extends PureComponent {
 }
 
 SongList.propTypes = {
-  songs: PropTypes.object.isRequired
+  songs: PropTypes.object.isRequired,
+  vote: PropTypes.func.isRequired
 };

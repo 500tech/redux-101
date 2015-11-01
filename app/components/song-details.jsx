@@ -1,14 +1,32 @@
 import React, { PropTypes } from 'react';
 import PureComponent from 'react-pure-render/component';
-import { Row, Col, Thumbnail } from 'react-bootstrap';
+import { Row, Col, Glyphicon, Thumbnail } from 'react-bootstrap';
 
 export default class SongDetails extends PureComponent {
+
+  _voteButton(direction) {
+    return this.props.vote
+      ? <Glyphicon glyph={ `arrow-${direction}` }
+                   onClick={ this._vote.bind(this, direction) }/>
+      : null;
+  }
+
+  _vote(direction) {
+    this.props.vote(direction, this.props.song.get('id'));
+  }
+
   render() {
     const details = this.props.song.toJS();
 
     return (
       <Row>
-        <Col md={ 4 }>
+        <Col md={ 1 }>
+          { this._voteButton('up') }
+          { details.votes }
+          { this._voteButton('down') }
+        </Col>
+
+        <Col md={ 2 }>
           <Thumbnail src={ details.thumbnailUrl } bsSize="xs"/>
         </Col>
 
@@ -21,5 +39,6 @@ export default class SongDetails extends PureComponent {
 }
 
 SongDetails.propTypes = {
-  song: PropTypes.object.isRequired
+  song: PropTypes.object.isRequired,
+  vote: PropTypes.func
 };

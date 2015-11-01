@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import PureComponent from 'react-pure-render/component';
 import { connect } from 'react-redux';
-import { addSong, playNext, fetchPlaylist } from 'actions/playlist';
+import { addSong, playNext, fetchPlaylist, vote } from 'actions/playlist';
 
 import AddSong from 'components/add-song.jsx';
 import SongList from 'components/song-list.jsx';
@@ -23,6 +23,10 @@ export class Playlist extends PureComponent {
     clearInterval(this.state.playNextInterval);
   }
 
+  _vote(direction, songId) {
+    this.props.dispatch(vote(direction, songId, this.props.params.playlistId));
+  }
+
   _addSong(youtubeUrl) {
     this.props.dispatch(addSong(youtubeUrl, this.props.params.playlistId));
   }
@@ -33,7 +37,7 @@ export class Playlist extends PureComponent {
 
         <NowPlaying song={ this.props.nowPlaying }/>
 
-        <SongList songs={ this.props.songs }/>
+        <SongList songs={ this.props.songs } vote={ this._vote.bind(this) }/>
 
         <AddSong addSong={ this._addSong.bind(this) }/>
 
