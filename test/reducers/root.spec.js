@@ -4,29 +4,15 @@ import Immutable from 'immutable';
 
 describe('Root reducer', () => {
   const initialState = Immutable.fromJS({
-    nowPlaying: null,
-    songs: [
-      { title: 'Hey Jude' },
-      { title: 'Let It Be' },
-      { title: 'Yesterday' }
-    ]
+    playlist: {
+      nowPlaying: null,
+      songs: []
+    },
+    playlists: []
   });
 
   it('should not change state on unknown action', () => {
-    expect(rootReducer(initialState, { type: 'FAKE' })).toEqual(initialState);
+    expect(rootReducer(initialState, { type: 'FAKE' }).toJS()).toEqual(initialState.toJS());
   });
 
-  it('should add song', () => {
-    const nextState = Immutable.fromJS({
-      nowPlaying: null,
-      songs: [
-        { title: 'Hey Jude' },
-        { title: 'Let It Be' },
-        { title: 'Yesterday' },
-        { title: 'TEST' }
-      ]
-    });
-
-    expect(rootReducer(prevState, addSong('TEST')).toEqual(nextState);
-  });
 });

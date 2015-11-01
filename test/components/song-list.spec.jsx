@@ -9,8 +9,8 @@ describe('SongList component', () => {
 
   let Component;
   const songs = Immutable.fromJS([
-    { title: 'Hey Jude' },
-    { title: 'Let It Be' }
+    { id: 1, title: 'Hey Jude' },
+    { id: 2, title: 'Let It Be' }
   ]);
 
   beforeAll(() => {
