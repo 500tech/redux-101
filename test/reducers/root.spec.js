@@ -4,12 +4,10 @@ import Immutable from 'immutable';
 
 describe('Root reducer', () => {
   const initialState = Immutable.fromJS({
-    nowPlaying: null,
-    songs: [
-      { title: 'Hey Jude' },
-      { title: 'Let It Be' },
-      { title: 'Yesterday' }
-    ]
+    playlist: {
+      nowPlaying: null,
+      songs: []
+    }
   });
 
   it('should not change state on unknown action', () => {
