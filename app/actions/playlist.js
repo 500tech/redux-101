@@ -3,7 +3,7 @@ import { ADD_SONG_ERROR, PLAY_NEXT, PLAYLIST_FETCHING, PLAYLIST_FETCH_SUCCESS, P
 
 export function addSong(youtubeUrl, playlistId) {
   return (dispatch) => {
-    request.post('http://redux101.500tech.com/playlists/redux101')
+    request.post(`http://redux101.500tech.com/playlists/${playlistId}`)
       .send({ youtubeUrl })
       .end((error, response) => {
         if (error) {
