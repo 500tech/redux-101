@@ -13,7 +13,7 @@ export default class Root extends PureComponent {
 
             <PageHeader>TeamTube</PageHeader>
 
-            <Playlist />
+            { this.props.children }
 
           </Col>
         </Row>

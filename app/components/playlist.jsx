@@ -16,7 +16,7 @@ export class Playlist extends PureComponent {
 
     this.setState({ playNextInterval });
 
-    this.props.dispatch(fetchPlaylist());
+    this.props.dispatch(fetchPlaylist(this.props.params.playlistId));
   }
 
   componentWillUnmount() {
@@ -24,7 +24,7 @@ export class Playlist extends PureComponent {
   }
 
   _addSong(youtubeUrl) {
-    this.props.dispatch(addSong(youtubeUrl));
+    this.props.dispatch(addSong(youtubeUrl, this.props.params.playlistId));
   }
 
   render() {
@@ -48,9 +48,10 @@ Playlist.propTypes = {
 };
 
 function mapStateToProps(state) {
+  const playlist = state.get('playlist');
   return {
-    nowPlaying: state.get('nowPlaying'),
-    songs: state.get('songs')
+    nowPlaying: playlist.get('nowPlaying'),
+    songs: playlist.get('songs')
   };
 }
 
