@@ -9,20 +9,18 @@ import NowPlaying from 'components/now-playing.jsx';
 
 export class Playlist extends PureComponent {
   componentDidMount() {
-    const handle = setInterval(
+    const playNextInterval = setInterval(
       () => this.props.dispatch(playNext()),
       5000
     );
 
-    this.setState({ handle });
+    this.setState({ playNextInterval });
 
     this.props.dispatch(fetchPlaylist());
   }
 
   componentWillUnmount() {
-    if (this.state.handle) {
-      clearInterval(this.state.handle);
-    }
+    clearInterval(this.state.playNextInterval);
   }
 
   _addSong(youtubeUrl) {

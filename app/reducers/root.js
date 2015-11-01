@@ -9,14 +9,9 @@ const initialState = Immutable.fromJS({
 export function rootReducer(state = initialState, action) {
   switch(action.type) {
     case PLAY_NEXT:
-      let nextId = 0;
+      const randomIndex = Math.floor(Math.random() * state.get('songs').size);
 
-      if (state.get('nowPlaying')) {
-        const prevId = state.get('songs').toJS().findIndex(song => song.title === state.getIn(['nowPlaying', 'title']));
-        nextId = prevId + 1 >= state.get('songs').size ? 0 : prevId + 1;
-      }
-
-      return state.set('nowPlaying', state.getIn(['songs', nextId]));
+      return state.set('nowPlaying', state.getIn(['songs', randomIndex]));
 
     case PLAYLIST_FETCH_SUCCESS:
       return Immutable.fromJS(action.playlist);
