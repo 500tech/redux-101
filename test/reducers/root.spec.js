@@ -27,6 +27,6 @@ describe('Root reducer', () => {
       ]
     });
 
-    expect(rootReducer(prevState, addSong('TEST')).toEqual(nextState));
+    expect(rootReducer(prevState, addSong('TEST'))).toEqual(nextState);
   });
 });
