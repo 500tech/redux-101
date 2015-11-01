@@ -5,7 +5,7 @@ export function addSong(title) {
   return { type: ADD_SONG, title };
 }
 
-export function playNext(title) {
+export function playNext() {
   return { type: PLAY_NEXT };
 }
 
@@ -35,3 +35,4 @@ export function fetchPlaylist() {
       });
   };
 }
+
