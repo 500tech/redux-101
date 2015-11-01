@@ -13,7 +13,7 @@ export function rootReducer(state = initialState, action) {
   switch(action.type) {
     case ADD_SONG:
       return Object.assign({}, state, {
-        songs: state.songs.concat({ title: action.title })
+        songs: [...state.songs, { title: action.title }]
       });
 
     case PLAY_NEXT:
