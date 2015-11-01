@@ -17,15 +17,10 @@ export function rootReducer(state = initialState, action) {
       });
 
     case PLAY_NEXT:
-      let nextId = 0;
-
-      if (state.nowPlaying) {
-        const prevId = state.songs.findIndex(song => song.title === state.nowPlaying.title);
-        nextId = prevId + 1 >= state.songs.length ? 0 : prevId + 1;
-      }
+      const randomIndex = Math.floor(Math.random() * state.songs.length);
 
       return Object.assign({}, state, {
-        nowPlaying: state.songs[nextId]
+        nowPlaying: state.songs[randomIndex]
       });
 
     default:
