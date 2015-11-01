@@ -14,7 +14,7 @@ describe('SongList component', () => {
   ]);
 
   beforeAll(() => {
-    Component = ReactTestUtils.renderIntoDocument(<SongList songs={ songs } />);
+    Component = ReactTestUtils.renderIntoDocument(<SongList songs={ songs } vote={ () => {} } />);
   });
 
   it('should render', () => {
