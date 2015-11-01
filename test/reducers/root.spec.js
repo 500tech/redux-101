@@ -28,10 +28,10 @@ describe('Root reducer', () => {
         { title: 'Hey Jude' },
         { title: 'Let It Be' },
         { title: 'Yesterday' },
-        { title: 'foo' }
+        { title: 'TEST' }
       ]
     };
 
-    expect(rootReducer(prevState, addSong('foo')).toEqual(nextState);
+    expect(rootReducer(prevState, addSong('TEST')).toEqual(nextState);
   });
 });
