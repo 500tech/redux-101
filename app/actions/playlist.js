@@ -19,7 +19,7 @@ export function addSongError(error) {
   return { type: ADD_SONG_ERROR, error }
 }
 
-export function playNext(title) {
+export function playNext() {
   return { type: PLAY_NEXT };
 }
 
@@ -49,3 +49,4 @@ export function fetchPlaylist() {
       });
   };
 }
+
